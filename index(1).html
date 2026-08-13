@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LARPSQUAD — клан PIONER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--bg2:#121212;--panel:#151515;--border:#2b2b2b;
+  --text:#e9e6df;--dim:#948f86;--faint:#6b6660;--red:#b32e2e;--red2:#c93d3d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Rubik,sans-serif;font-weight:300;line-height:1.6}
+h1,h2,h3,.display{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:auto;padding:0 28px}
+header{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.94);backdrop-filter:blur(8px);border-bottom:1px solid #232323}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:17px 0;gap:20px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.12em}
+.logo svg{width:23px;height:23px}
+nav ul{display:flex;list-style:none;gap:25px}
+nav a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+nav a:hover{color:#fff}
+.btn{display:inline-block;padding:10px 19px;border:1px solid var(--red);background:transparent;color:var(--text);font:500 12px Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:var(--red);color:#fff}
+.btn-solid{background:var(--red)}
+.hero{min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 50% 38%,#292929 0,transparent 38%),
+ linear-gradient(#151515,#070707 72%,#050505)}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:180px;background:
+ linear-gradient(135deg,transparent 0 13%,#050505 13% 18%,transparent 18% 28%,#050505 28% 34%,transparent 34%),
+ linear-gradient(225deg,transparent 0 15%,#050505 15% 21%,transparent 21% 31%,#050505 31% 37%,transparent 37%)}
+.hero-content{position:relative;z-index:2}
+.eyebrow{font-size:12px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;margin-bottom:25px}
+.hero h1{font-size:clamp(58px,10vw,120px);line-height:.9;color:#f4f1ea}
+.emblem{width:62px;height:62px;margin:30px auto}
+.quote{font-size:14px;letter-spacing:.17em;text-transform:uppercase;color:var(--dim)}
+.quote b{color:var(--red2)}
+section{padding:58px 0}
+.panel{background:var(--panel);border:1px solid var(--border);padding:32px}
+.section-title{font-size:21px;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-title:before{content:"";width:4px;height:20px;background:var(--red)}
+.devise{display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:center}
+.emblem-big{width:140px;height:140px;margin:auto}
+.devise p,.about p{color:var(--dim);font-size:15px}
+.accent{color:var(--red2)}
+.cols{display:grid;grid-template-columns:1.55fr 1fr;gap:26px}
+.stack{display:flex;flex-direction:column;gap:26px}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:20px}
+.value{text-align:center;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.icon{width:44px;height:44px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.icon svg{width:19px;height:19px}
+.discord{margin-top:22px;padding:16px 18px;border:1px solid var(--border);background:#141b28;display:flex;align-items:center;gap:14px}
+.dc{width:38px;height:38px;border-radius:50%;background:#5865f2;display:grid;place-items:center;flex:none}
+.dc svg{width:20px;fill:#fff}
+.discord b{font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.discord span{display:block;font-size:11px;color:var(--faint)}
+.roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:24px 14px}
+.member{text-align:center}
+.avatar{width:70px;height:70px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);display:grid;place-items:center;margin:auto auto 9px;font:20px Oswald;color:var(--dim);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.member-name{font-size:12px;color:var(--dim)}
+.news-item{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid #232323}
+.news-item:last-child{border-bottom:0}
+.news-img{width:82px;height:62px;object-fit:cover;background:#090909;flex:none}
+.news-date{display:block;color:var(--red2);font-size:10px;letter-spacing:.07em;margin-bottom:4px}
+.news-title{font-size:14px;font-weight:500;margin-bottom:3px}
+.news-text{font-size:12px;color:var(--dim)}
+.req{list-style:none;display:flex;flex-direction:column;gap:12px}
+.req li{font-size:13px;color:var(--dim);display:flex;gap:9px}
+.req li:before{content:"✓";color:var(--red2);font-weight:600}
+footer{border-top:1px solid #232323;padding:25px 0;margin-top:15px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.foot p,.slogan{font-size:11px;color:var(--faint)}
+.slogan{text-transform:uppercase;letter-spacing:.1em;color:#5c1f1f}
+.socials{display:flex;gap:10px}
+.socials a{width:30px;height:30px;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;color:var(--faint)}
+.socials a:hover{border-color:var(--red);color:var(--red2)}
+.socials svg{width:14px;height:14px}
+@media(max-width:850px){
+ nav ul{display:none}.cols{grid-template-columns:1fr}.devise{grid-template-columns:1fr;text-align:center}
+ .values{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){.wrap{padding:0 18px}.panel{padding:23px}.hero{min-height:540px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 100 100"><polygon points="50,90 5,15 95,15" fill="none" stroke="#e9e6df" stroke-width="6"/><polygon points="50,68 25,26 75,26" fill="#b32e2e"/></svg>
+      LARPSQUAD
+    </a>
+    <nav><ul>
+      <li><a href="#top">Главная</a></li>
+      <li><a href="#about">О клане</a></li>
+      <li><a href="#roster">Состав</a></li>
+      <li><a href="#news">Новости</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul></nav>
+    <a class="btn btn-solid" href="https://discord.gg/v5b5zPFxD2" target="_blank" rel="noopener">Вступить</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-content wrap">
+    <div class="eyebrow">Клан в игре<br>PIONER</div>
+    <h1 class="display">LARPSQUAD</h1>
+    <svg class="emblem" viewBox="0 0 100 100">
+      <polygon points="50,90 8,18 92,18" fill="none" stroke="#b32e2e" stroke-width="4"/>
+      <polygon points="50,68 26,28 74,28" fill="#b32e2e"/>
+    </svg>
+    <div class="quote">«Сделаем <b>PIONER</b> великой»</div>
+  </div>
+</section>
+
+<main class="wrap">
+<section id="about">
+  <div class="panel devise">
+    <svg class="emblem-big" viewBox="0 0 100 100">
+      <polygon points="50,92 6,16 94,16" fill="none" stroke="#e9e6df" stroke-width="3" opacity=".5"/>
+      <polygon points="50,68 26,28 74,28" fill="none" stroke="#b32e2e" stroke-width="3"/>
+    </svg>
+    <div>
+      <h2 class="section-title">Наш девиз</h2>
+      <p>Мы объединяем игроков, которые верят в потенциал PIONER. Наша цель — играть вместе, развиваться и помогать сделать игру лучше.</p>
+    </div>
+  </div>
+</section>
+
+<section id="roster">
+  <div class="panel">
+    <h2 class="section-title">Состав клана</h2>
+    <div class="roster" id="roster"></div>
+  </div>
+</section>
+
+<div class="cols">
+  <div class="stack">
+    <div class="panel about">
+      <h2 class="section-title">О клане</h2>
+      <p>LARPSQUAD — объединение PIONERов, которые хотят играть вместе, помогать новичкам и развивать сообщество вокруг игры.</p>
+      <a class="btn" href="https://discord.gg/v5b5zPFxD2" target="_blank" rel="noopener" style="margin-top:18px">Наш Discord</a>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">Наши ценности</h2>
+      <div class="values">
+        <div class="value"><div class="icon">◎</div>Единство</div>
+        <div class="value"><div class="icon">✓</div>Уважение</div>
+        <div class="value"><div class="icon">★</div>Дисциплина</div>
+        <div class="value"><div class="icon">◆</div>Цель</div>
+      </div>
+      <a class="discord" href="https://discord.gg/v5b5zPFxD2" target="_blank" rel="noopener">
+        <div class="dc">
+          <svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 16.9 3l-.6 1.3a18.3 18.3 0 0 0-5.5 0L9.2 3a19.8 19.8 0 0 0-3.4 1.4C3 8.5 2.3 12.5 2.6 16.5a19.9 19.9 0 0 0 6 3.1c.5-.7.9-1.4 1.3-2.1-.7-.3-1.4-.6-2-.9l.5-.4a14.2 14.2 0 0 0 11.2 0l.5.4c-.6.4-1.3.7-2 .9.4.7.8 1.4 1.3 2.1a19.9 19.9 0 0 0 6-3.1c.4-4.6-.7-8.6-3-12.1ZM9.7 14.1c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Zm6.6 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Z"/></svg>
+        </div>
+        <div><b>Присоединяйся к нам в Discord</b><span>Общение, новости, помощь и координация</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="panel" id="news">
+      <h2 class="section-title">Новости клана</h2>
+      <div id="newsList"></div>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">Требования</h2>
+      <ul class="req">
+        <li>Активность и желание развиваться</li>
+        <li>Уважение к соклановцам</li>
+        <li>Иметь PIONER на доступной платформе</li>
+      </ul>
+      <a class="btn btn-solid" href="https://discord.gg/v5b5zPFxD2" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:22px">Хочу в клан</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer id="contacts">
+  <div class="wrap foot">
+    <p>© 2026 LARPSQUAD CLAN</p>
+    <div class="slogan">Сделаем PIONER великой</div>
+    <div class="socials">
+      <a href="https://discord.gg/v5b5zPFxD2" target="_blank" rel="noopener" aria-label="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 16.9 3l-.6 1.3a18.3 18.3 0 0 0-5.5 0L9.2 3a19.8 19.8 0 0 0-3.4 1.4C3 8.5 2.3 12.5 2.6 16.5a19.9 19.9 0 0 0 6 3.1c.5-.7.9-1.4 1.3-2.1-.7-.3-1.4-.6-2-.9l.5-.4a14.2 14.2 0 0 0 11.2 0l.5.4c-.6.4-1.3.7-2 .9.4.7.8 1.4 1.3 2.1a19.9 19.9 0 0 0 6-3.1c.4-4.6-.7-8.6-3-12.1Z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// GITHUB PAGES VERSION — здесь нет сервера, базы данных,
+// авторизации или window.storage.
+//
+// Чтобы изменить состав/новости, отредактируй массивы ниже.
+// ============================================================
+
+const MEMBERS = [];
+
+const NEWS = [
+  {
+    date:"13.08.2026",
+    title:"Добро пожаловать на сайт LARPSQUAD",
+    text:"Официальная страница клана. Здесь будут появляться новости и информация о составе."
+  }
+];
+
+function initials(name){
+  return name.trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();
+}
+
+document.getElementById("roster").innerHTML = MEMBERS.length
+  ? MEMBERS.map(m => `
+      <div class="member">
+        <div class="avatar">${m.avatar ? `<img src="${m.avatar}" alt="">` : initials(m.name)}</div>
+        <div class="member-name">${m.name}</div>
+      </div>
+    `).join("")
+  : `<div style="color:var(--faint);grid-column:1/-1;text-align:center">Состав пока не добавлен.</div>`;
+
+document.getElementById("newsList").innerHTML = NEWS.length
+  ? NEWS.map(n => `
+      <article class="news-item">
+        ${n.image ? `<img class="news-img" src="${n.image}" alt="">` : ""}
+        <div>
+          <span class="news-date">${n.date}</span>
+          <div class="news-title">${n.title}</div>
+          <div class="news-text">${n.text}</div>
+        </div>
+      </article>
+    `).join("")
+  : `<div style="color:var(--faint)">Новостей пока нет.</div>`;
+</script>
+</body>
+</html>
